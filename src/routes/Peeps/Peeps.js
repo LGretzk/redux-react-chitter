@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {fetchPeeps} from '../../apis/peep';
+import PeepCard from '../../components/Peep/PeepCard';
 
 function Peeps() {
-  const [peeps, setPeeps] = useState("");
+  const [peeps, setPeeps] = useState([]);
   console.log(peeps[0]);
 
   useEffect(() => {
@@ -16,6 +17,9 @@ function Peeps() {
   return (
     <div>
       <h1>This is the peeps page</h1>
+      <div>
+        {peeps.map(peep => <PeepCard data={peep} key={peep.id}/>)}
+      </div>
     </div>
   );
 }
@@ -33,3 +37,4 @@ export default Peeps;
 // handle: "terry"
 // id: 1091
 // }
+// Peeps = array of objects
