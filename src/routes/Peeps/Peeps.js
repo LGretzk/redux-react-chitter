@@ -4,7 +4,6 @@ import PeepCard from '../../components/Peep/PeepCard';
 
 function Peeps() {
   const [peeps, setPeeps] = useState([]);
-  console.log(peeps[0]);
 
   useEffect(() => {
     async function load() {
