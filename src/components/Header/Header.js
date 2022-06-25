@@ -5,7 +5,8 @@ function Header() {
     <div>
       <h1>This the header</h1>
       <Link to="">Home</Link><br></br>
-      <Link to="peeps">Peeps</Link>
+      <Link to="peeps">Peeps</Link><br></br>
+      <Link to="register">Register</Link>
     </div>
   );
 }
