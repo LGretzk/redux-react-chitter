@@ -1,7 +1,6 @@
 import { register } from '../../apis/authentication';
 
 function Register() {
-  // Registration handler
   const handleRegister = async (event) => {
     event.preventDefault();
     await register(event.target);

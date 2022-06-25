@@ -6,6 +6,7 @@ import Peeps from '../routes/Peeps/Peeps'
 import PeepDetails from '../routes/PeepDetails/PeepDetails';
 import Header from './Header/Header';
 import Register from '../routes/Register/Register';
+import Login from '../routes/Login/Login';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/peeps" element={<Peeps/>} />
         <Route path="/peeps/:peepId" element={<PeepDetails/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/login" element={<Login/>} />
       </Routes>
     </div>
   );

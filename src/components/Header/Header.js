@@ -6,7 +6,8 @@ function Header() {
       <h1>This the header</h1>
       <Link to="">Home</Link><br></br>
       <Link to="peeps">Peeps</Link><br></br>
-      <Link to="register">Register</Link>
+      <Link to="register">Register</Link><br></br>
+      <Link to="login">Login</Link>
     </div>
   );
 }
