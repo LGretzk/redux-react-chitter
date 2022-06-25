@@ -1,8 +1,11 @@
+import { register } from '../../apis/authentication';
+
 function Register() {
   // Registration handler
-  const handleRegister = (event) => {
-    console.log(event.target.password.value);
+  const handleRegister = async (event) => {
     event.preventDefault();
+    await register(event.target);
+    console.log('User registered');
   }
 
   return (
