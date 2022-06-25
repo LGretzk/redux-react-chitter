@@ -1,9 +1,12 @@
-function Login() {
+import { login } from "../../apis/authentication";
 
-  const handleLogin = () => {
-    console.log('handleLogin has been called');
+function Login() {
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    await login(event.target);
+    console.log('User logged in');
   }
-  
+
   return (
     <div>
       <h1>This is the login page</h1>

@@ -13,7 +13,6 @@ export const register = async (formData) => {
     });
     if(response.ok) {
       const data = await response.json();
-      console.log('data never gets logged ' + data);
       return data;
     } throw new Error('Request failed');
   } catch (error) {
@@ -21,3 +20,25 @@ export const register = async (formData) => {
   }
 };
 
+// API interface for logging a user
+export const login = async (formData) => {
+  try {
+    const response = await fetch('https://chitter-backend-api-v2.herokuapp.com/sessions', {
+      headers: {'Content-Type': 'application/json'},
+      method: "POST",
+      body: JSON.stringify({
+        session: {
+          handle: formData.handle.value,
+          password: formData.password.value
+        }
+      })
+    });
+    if(response.ok) {
+      const data = await response.json();
+      console.log('response is ' + data);
+      return data;
+    } throw new Error('Request failed');
+  } catch (error) {
+    console.log(error);
+  }
+};
