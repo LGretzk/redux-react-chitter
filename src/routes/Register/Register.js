@@ -1,7 +1,18 @@
 function Register() {
+  // Registration handler
+  const handleRegister = (event) => {
+    console.log(event.target.password.value);
+    event.preventDefault();
+  }
+
   return (
     <div>
       <h1>This is the registration page</h1>
+      <form onSubmit={handleRegister}>
+        <input type="text" name="handle" placeholder="Username"></input>
+        <input type="password" name="password" placeholder="Password"></input>
+        <button type="submit" value="register">Register</button>
+      </form>
     </div>
   );
 }
