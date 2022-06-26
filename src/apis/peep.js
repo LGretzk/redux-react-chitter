@@ -42,7 +42,26 @@ export const postPeep = async ({message, sessionKey, userId}) => {
     });
     if(response.ok) {
       const data = await response.json();
+      data.session_key = sessionKey.value;
       return data;
+    } throw new Error('Request failed');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// API interface for deleting a peep
+export const deletePeep = async (sessionKey, peepId) => {
+  try {
+    const response = await fetch(`https://chitter-backend-api-v2.herokuapp.com/peeps/${peepId}`, {
+      headers: {
+        'Authorization': `Token token=${sessionKey}`
+      },
+      method: "DELETE"
+    });
+    if(response.ok) {
+      console.log(response.status);
+      return response.status;
     } throw new Error('Request failed');
   } catch (error) {
     console.log(error);
