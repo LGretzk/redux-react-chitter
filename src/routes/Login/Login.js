@@ -1,10 +1,16 @@
 import { login } from "../../apis/authentication";
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function Login({ setSessionKey }) {
+  
+  const nav = useNavigate();
+
   const handleLogin = async (event) => {
     event.preventDefault();
-    await login(event.target);
+    const response = await login(event.target);
+    setSessionKey(response.session_key);
     console.log('User logged in');
+    nav("/peeps");
   }
 
   return (

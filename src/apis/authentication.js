@@ -35,7 +35,6 @@ export const login = async (formData) => {
     });
     if(response.ok) {
       const data = await response.json();
-      console.log('response is ' + data);
       return data;
     } throw new Error('Request failed');
   } catch (error) {

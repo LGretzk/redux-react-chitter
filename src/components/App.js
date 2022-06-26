@@ -8,7 +8,19 @@ import Header from './Header/Header';
 import Register from '../routes/Register/Register';
 import Login from '../routes/Login/Login';
 
+function setSessionKey(sessionKey) {
+  sessionStorage.setItem('sessionKey', JSON.stringify(sessionKey));
+}
+
+function getSessionKey() {
+  let keyString = sessionStorage.getItem('sessionKey');
+  let userSessionKey = JSON.parse(keyString);
+  return userSessionKey?.sessionKey
+}
+
 function App() {
+  let sessionKey = getSessionKey();
+
   return (
     <div className="App">
       <Header />
@@ -17,7 +29,7 @@ function App() {
         <Route path="/peeps" element={<Peeps/>} />
         <Route path="/peeps/:peepId" element={<PeepDetails/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/login" element={<Login setSessionKey={setSessionKey} />} />
       </Routes>
     </div>
   );

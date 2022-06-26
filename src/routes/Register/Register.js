@@ -1,10 +1,16 @@
 import { register } from '../../apis/authentication';
+import { useNavigate } from 'react-router-dom';
+
 
 function Register() {
+
+  const nav = useNavigate();
+
   const handleRegister = async (event) => {
     event.preventDefault();
     await register(event.target);
     console.log('User registered');
+    nav("/login");
   }
 
   return (
