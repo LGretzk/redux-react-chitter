@@ -1,3 +1,5 @@
+import { postPeep } from "../../apis/peep";
+
 function PeepForm() {
 
   let sessionKey = sessionStorage.getItem('sessionKey');
@@ -5,9 +7,9 @@ function PeepForm() {
 
   const handleSubmitPeep = async (event) => {
     event.preventDefault();
-    console.log(event.target);
-    console.log('sess key is ' + sessionKey);
-    console.log('userId is ' + userId);
+    const response = await postPeep(event.target);
+    console.log(response);
+    console.log('Peep posted');
   }
 
   return (
