@@ -15,7 +15,17 @@ function setSessionKey(sessionKey) {
 function getSessionKey() {
   let keyString = sessionStorage.getItem('sessionKey');
   let userSessionKey = JSON.parse(keyString);
-  return userSessionKey?.sessionKey
+  return userSessionKey?.sessionKey;
+}
+
+function setUserId(userId) {
+  sessionStorage.setItem('userId', JSON.stringify(userId));
+}
+
+function getUserId() {
+  let idString = sessionStorage.getItem('userId');
+  let sessionUserId = JSON.parse(idString);
+  return sessionUserId?.userId;
 }
 
 function App() {
@@ -29,7 +39,7 @@ function App() {
         <Route path="/peeps" element={<Peeps/>} />
         <Route path="/peeps/:peepId" element={<PeepDetails/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/login" element={<Login setSessionKey={setSessionKey} />} />
+        <Route path="/login" element={<Login setSessionKey={setSessionKey} setUserId={setUserId} />} />
       </Routes>
     </div>
   );

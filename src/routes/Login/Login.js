@@ -1,7 +1,7 @@
 import { login } from "../../apis/authentication";
 import { useNavigate } from 'react-router-dom';
 
-function Login({ setSessionKey }) {
+function Login({ setSessionKey, setUserId }) {
   
   const nav = useNavigate();
 
@@ -9,6 +9,7 @@ function Login({ setSessionKey }) {
     event.preventDefault();
     const response = await login(event.target);
     setSessionKey(response.session_key);
+    setUserId(response.user_id);
     console.log('User logged in');
     nav("/peeps");
   }
