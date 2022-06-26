@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {fetchPeeps} from '../../apis/peep';
+import PeepForm from '../../components/PeepForm/PeepForm';
 import PeepCard from '../../components/Peep/PeepCard';
 
 function Peeps() {
@@ -16,6 +17,9 @@ function Peeps() {
   return (
     <div>
       <h1>This is the peeps page</h1>
+      <div>
+        <PeepForm/>
+      </div>
       <div>
         {peeps.map(peep => <PeepCard data={peep} key={peep.id}/>)}
       </div>
