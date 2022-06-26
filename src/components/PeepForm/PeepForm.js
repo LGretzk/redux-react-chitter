@@ -1,12 +1,17 @@
 import { postPeep } from "../../apis/peep";
+import { useNavigate } from 'react-router-dom';
 
 function PeepForm() {
 
+  const nav = useNavigate();
   let sessionKey = sessionStorage.getItem('sessionKey');
   let userId = sessionStorage.getItem('userId');
 
   const handleSubmitPeep = async (event) => {
     event.preventDefault();
+    if (!sessionKey) {
+      nav("/login");
+    }
     const response = await postPeep(event.target);
     console.log(response);
     console.log('Peep posted');
