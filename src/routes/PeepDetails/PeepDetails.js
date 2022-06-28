@@ -1,27 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
-import { fetchPeep } from '../../apis/peep';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { loadPeeps } from '../../store/peeps/Peeps.actions';
 
 function PeepDetails() {
   const { peepId } = useParams();
-  const [peep, setPeep] = useState({});
-  const [userHandle, setUserHandle] = useState("");
+  let peepIdInt = parseInt(peepId);
+  const dispatch = useDispatch();
+  let peeps = useSelector(state => state.peeps);
+  let [peep] = peeps.filter(peep => peep.id === peepIdInt);
 
   useEffect(() => {
-    async function load() {
-      const response = await fetchPeep(peepId);
-      setPeep(response);
-      setUserHandle(response.user.handle);
-    }
+      async function load() {
+        await dispatch(loadPeeps());
+      }
     load();
-  }, [peepId]);
+  }, [peepId, dispatch]);
 
   return (
     <div>
       <h1>This is the individual peep's page</h1>
       <div className="peep-container">
         <p>{peep.body}</p>
-        <p>{userHandle}</p>
+        <p>{peep.user.handle}</p>
         <p>{peep.created_at}</p>
       </div>
     </div>

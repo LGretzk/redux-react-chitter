@@ -23,7 +23,6 @@ function Peeps() {
         <PeepForm/>
       </div>
       <div>
-        {console.log(peeps)}
         {peeps.map(peep => <PeepCard data={peep} key={peep.id}/>)}
       </div>
     </div>
