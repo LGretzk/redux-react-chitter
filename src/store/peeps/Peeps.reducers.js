@@ -11,7 +11,7 @@ const peepSlice = createSlice({
     builder
       // Load peeps success
       .addCase(loadPeeps.fulfilled, (state, action) => {
-        state.concat(action.payload);
+        return state = action.payload;
       })
       // Load peep by ID success
       .addCase(loadPeep.fulfilled, (state, action) => {
