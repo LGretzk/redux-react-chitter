@@ -42,7 +42,10 @@ export const removePeep = createAsyncThunk(
   async ({sessionKey, peepId}, thunkAPI) => {
     try {
       const response = await deletePeep(sessionKey, peepId);
-      return response;
+      return {
+        response: response,
+        peepId: peepId
+      };
     } catch(err) {
       throw err;
     }

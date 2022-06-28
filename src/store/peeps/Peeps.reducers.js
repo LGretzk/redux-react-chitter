@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loadPeeps, loadPeep } from './Peeps.actions';
+import { loadPeeps, loadPeep, removePeep } from './Peeps.actions';
 
 const initialState = [];
 
@@ -16,6 +16,10 @@ const peepSlice = createSlice({
       // Load peep by ID success
       .addCase(loadPeep.fulfilled, (state, action) => {
         state.push(action.payload);
+      })
+      // Delete peep success
+      .addCase(removePeep.fulfilled, (state, action) => {
+          return state.filter(peep => peep.id !== action.payload.peepId);
       })
   }
 });
