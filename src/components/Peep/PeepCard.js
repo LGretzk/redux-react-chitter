@@ -7,6 +7,7 @@ import { removePeep } from '../../store/peeps/Peeps.actions';
 import './PeepCard.css';
 
 function PeepCard(props) {
+  
   const {data} = props;
   const dispatch = useDispatch();
   

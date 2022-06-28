@@ -14,7 +14,7 @@ function Peeps() {
       await dispatch(loadPeeps());
     }
     load();
-  }, [dispatch]);
+  }, [peeps, dispatch]);
 
   return (
     <div>

@@ -1,16 +1,18 @@
-import { postPeep } from "../../apis/peep";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { uploadPeep } from '../../store/peeps/Peeps.actions';
 
 function PeepForm() {
 
   const nav = useNavigate();
+  const dispatch = useDispatch();
+
   let sessionKey = sessionStorage.getItem('sessionKey');
   let userId = sessionStorage.getItem('userId');
 
   const handleSubmitPeep = async (event) => {
     event.preventDefault();
-    const response = await postPeep(event.target);
-    console.log(response);
+    await dispatch(uploadPeep(event.target));
     console.log('Peep posted');
   }
 
